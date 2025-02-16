@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://g1tv6v2bb6ga"]
+
+[ext_resource type="PackedScene" uid="uid://wvh6lg662eq4" path="res://Scenes/Character/player.tscn" id="1_th73f"]
+[ext_resource type="PackedScene" uid="uid://bntra1nbugxnv" path="res://Scenes/Character/Enemy/Knight.tscn" id="2_nopsf"]
+
+[node name="Lvl1" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_th73f")]
+
+[node name="Knight" parent="." instance=ExtResource("2_nopsf")]

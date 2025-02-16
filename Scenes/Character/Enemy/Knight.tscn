@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://bntra1nbugxnv"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_7jjrl"]
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_tbstg"]
 [ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="2_5a1cw"]
 [ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="3_n6gye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
 
 [node name="Knight" type="CharacterBody2D"]
-script = ExtResource("1_7jjrl")
+script = ExtResource("1_tbstg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pf6ad")
@@ -15,3 +15,5 @@ shape = SubResource("CircleShape2D_pf6ad")
 [node name="HP" parent="." instance=ExtResource("3_n6gye")]
 
 [node name="Weapon" parent="." instance=ExtResource("2_5a1cw")]
+
+[node name="StateMachine" type="Node" parent="."]
