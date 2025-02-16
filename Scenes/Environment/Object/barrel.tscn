@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://fcyu0l2k63q0"]
+
+[ext_resource type="Script" path="res://Scripts/Object.cs" id="1_sijck"]
+[ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="2_jsbdj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27t80"]
+
+[node name="Barrel" type="StaticBody2D"]
+script = ExtResource("1_sijck")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_27t80")
+
+[node name="HP" parent="." instance=ExtResource("2_jsbdj")]

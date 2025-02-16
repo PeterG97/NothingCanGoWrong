@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://wvh6lg662eq4"]
+
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_028io"]
+[ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="2_5t0we"]
+[ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="3_fg3xg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_028io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pf6ad")
+
+[node name="HP" parent="." instance=ExtResource("2_5t0we")]
+
+[node name="Weapon" parent="." instance=ExtResource("3_fg3xg")]
