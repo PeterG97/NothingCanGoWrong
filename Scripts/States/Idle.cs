@@ -1,37 +1,26 @@
-using Godot;
-using System;
-
-
 public partial class Idle : State
 {
-    [Export] public Enemy Enemy { get; set; }
+    [Export] private CharacterBody2D enemyNode;
     
-    [Export] 
-    public int MoveSpeed {get; set;} = 10;
-	private Vector2 MoveDirection {get; set;}
-    private double WanderTime {get; set;}
+    [Export] private int moveSpeed = 10;
+    private Vector2 MoveDirection;
+    private double WanderTime;
 
-    private Random random = new Random();
+    private readonly Random random = new Random();
+    private Player player;
 
     private void RandomizeWander()
     {
         MoveDirection = new Vector2(random.Next(-1,1),random.Next(-1,1));
-        WanderTime = random.Next(1,8);
+        WanderTime = random.Next(1,3);
     }
 
     public override void Enter()
     {
         RandomizeWander();
+        player = GetTree().GetFirstNodeInGroup("Player") as Player;
     }
-
-    public override void _Ready()
-    {
-        if (Enemy is null)
-        {
-            Enemy = this.GetParent().GetParent<Enemy>();
-        }
-    }
-
+    
     public override void Update(double delta)
     {
         if (WanderTime > 0)
@@ -45,9 +34,16 @@ public partial class Idle : State
     }
     public override void PhysicsUpdate(double delta)
     {
-        if (Enemy is not null)
+        if (enemyNode is not null)
         {
-            Enemy.Velocity = MoveDirection * MoveSpeed;
+            enemyNode.Velocity = MoveDirection * moveSpeed;
+        }
+        
+        var direction = player.GlobalPosition - enemyNode.GlobalPosition;
+        
+        if (direction.Length() < 150)
+        {
+            EmitSignal(SignalName.Changed, this, "Chase");
         }
     }
 }
