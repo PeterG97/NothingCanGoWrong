@@ -1,32 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwnn3tqg6bxto"]
+[gd_scene load_steps=4 format=3 uid="uid://cwnn3tqg6bxto"]
 
 [ext_resource type="PackedScene" uid="uid://dd66ylvl56e11" path="res://Scenes/Levels/Level1_Dungeon.tscn" id="1_lir23"]
-[ext_resource type="PackedScene" uid="uid://wvh6lg662eq4" path="res://Scenes/Character/player.tscn" id="2_heuc0"]
-[ext_resource type="PackedScene" uid="uid://bntra1nbugxnv" path="res://Scenes/Character/Enemy/Knight.tscn" id="3_trpp1"]
+[ext_resource type="Script" path="res://Scripts/Meta/GameManager.cs" id="1_wxtn4"]
+[ext_resource type="Script" path="res://Scripts/Meta/GuiManager.cs" id="1_yfkch"]
 
-[sub_resource type="GDScript" id="GDScript_vylpa"]
-script/source = "extends Node2D
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_wxtn4")
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
-[node name="BaseNode" type="Node2D"]
-script = SubResource("GDScript_vylpa")
+[node name="GUIManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yfkch")
 
 [node name="Level1Dungeon" parent="." instance=ExtResource("1_lir23")]
 position = Vector2(-1, 4)
-
-[node name="Player" parent="." instance=ExtResource("2_heuc0")]
-position = Vector2(705, 316)
-
-[node name="Knight" parent="." instance=ExtResource("3_trpp1")]
-position = Vector2(223, 46)
-scale = Vector2(1.5, 1.5)
