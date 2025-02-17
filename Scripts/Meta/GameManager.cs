@@ -1,32 +1,54 @@
 namespace GameLogic;
 
+[Singleton]
 public partial class GameManager : Node
 {
+    public GameManager()
+    {
+        Instance = this;
+    }
+
+    public static GameManager Instance;
+
+    [Export]
+    public PackedScene Menu;
+    [Export]
+    public Array<PackedScene> Levels { get; set; } = new();
+
+    private Node currentScene;
+    [Export]
+    public Node CurrentScene { get; private set; }
+
     public GuiManager GuiManager;
-
-    [Export]
-    public PackedScene[] Levels;
-
-    private Node currentLevel;
-    [Export]
-    public Node CurrentLevel { get => currentLevel; set => SetLevel(value); }
+    public int Level {  get; private set; }
 
 	public override void _Ready()
 	{
         GuiManager = this.FindChild<GuiManager>();
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+        SetScene(Menu);
+    }
+
+    public override void _Process(double delta)
 	{
+        
 	}
 
-    public void SetLevel(Node level)
+    public void SetLevel(int level)
     {
-        currentLevel?.QueueFree();
+        Level = level;
+        SetScene(Levels[level - 1]);
+    }
 
-        currentLevel = level;
-        currentLevel.SetProcess(true);
-        currentLevel.Reparent(this);
+    public void NextLevel()
+        => SetLevel(Level + 1);
+
+    private Node SetScene(PackedScene scene)
+    {
+        currentScene?.QueueFree();
+        currentScene = scene.Instantiate();
+        AddChild(currentScene);
+
+        return currentScene;
     }
 }
