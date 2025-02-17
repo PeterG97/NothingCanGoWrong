@@ -1,13 +1,11 @@
-using Godot;
-using Godot.Collections;
-using System;
+namespace GameLogic;
 
 public partial class StateMachine : Node
 {
 	[Export] 
 	public State IntialState { get; set; }
 
-	private Dictionary<string,State> states = new ();
+	private System.Collections.Generic.Dictionary<string,State> states = new ();
 	private State currentState;
 	
 	// Called when the node enters the scene tree for the first time.
