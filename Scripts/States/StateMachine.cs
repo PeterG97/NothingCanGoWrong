@@ -2,11 +2,10 @@ namespace GameLogic;
 
 public partial class StateMachine : Node
 {
-	[Export] 
-	public State IntialState { get; set; }
+	[Export] private State IntialState;
 
-	private System.Collections.Generic.Dictionary<string,State> states = new ();
-	private State currentState;
+	private Dictionary<string,State> states = new ();
+	public State currentState { get; set; }
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

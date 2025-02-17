@@ -1,6 +1,4 @@
-﻿namespace NothingCanGoWrong.Scripts.States;
-
-public partial class Chase : State
+﻿public partial class Chase : State
 {
     [Export] private Enemy enemyNode;
     [Export] private int moveSpeed = 40;
@@ -18,14 +16,14 @@ public partial class Chase : State
         {
             enemyNode.Velocity = direction.Normalized() * moveSpeed;
         }
+        else if (direction.Length() > 200)
+        {
+            EmitSignal(SignalName.Changed, this, "Idle");
+        }
         else
         {
             enemyNode.Velocity = new Vector2(0, 0);
-        }
-
-        if (direction.Length() > 200)
-        {
-            EmitSignal(SignalName.Changed, this, "Idle");
+            EmitSignal(SignalName.Changed, this, "Attack");
         }
     }
 }
