@@ -4,71 +4,59 @@ using System;
 
 public partial class StateMachine : Node
 {
-    //[Export]
-    //public State? IntialState {get; set;}
+	[Export] 
+	public State IntialState { get; set; }
 
-    //public Dictionary<string,State> states { get; set;} = new ();
-    //private State? currentState;
+	private Dictionary<string,State> states = new ();
+	private State currentState;
+	
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+		foreach (var child in GetChildren())
+		{
+			if (child is not State state) continue;
+			states[child.Name.ToString().ToLower()] = state;
 
-    //// Called when the node enters the scene tree for the first time.
-    //public override void _Ready()
-    //{
-    //	foreach (var child in GetChildren())
-    //	{
-    //		if (child is State state)
-    //		{
-    //			states[child.Name.ToString().ToLower()] = state;
+			//potential memory leak but fuck it we ball
+			state.Changed += OnChildTransition;
+		}
 
-    //			//potential mememory leak but fuck it we ball
-    //			state.Transistioned += () => OnChildTransition(state, state.Name);
+		if (IntialState is null) return;
+		IntialState.Enter();
+		currentState = IntialState;
+	}
+	
 
-    //		}
-    //	}
-    //	if (IntialState is not null)
-    //	{
-    //		IntialState.Enter();
-    //		currentState = IntialState;
-    //	}
-    //}
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+		currentState?.Update(delta);
+	}
 
-    //// Called every frame. 'delta' is the elapsed time since the previous frame.
-    //public override void _Process(double delta)
-    //{
-    //	if (currentState is not null)
-    //	{
-    //		currentState.Update();
-    //	}
-    //}
+	public override void _PhysicsProcess(double delta)
+	{
+		currentState?.PhysicsUpdate(delta);
+	}
 
-    //public override void _PhysicsProcess(double delta)
-    //{
-    //	if (currentState is not null)
-    //	{
-    //		currentState.PhysicsUpdate(delta);
-    //	}
-    //}
+	private void OnChildTransition(State state, string newStateName)
+	{
+		if (state != currentState)
+		{
+			return;
+		}
+		
+		State newState = states[newStateName.ToLower()];
+		if (newState is null)
+		{
+			return;
+		}
 
-    //public void OnChildTransition(State state, string newStateName)
-    //{
-    //	if (state != currentState)
-    //	{
-    //		return;
-    //	}
+		currentState?.Exit();
 
-    //	var newState = states[newStateName.ToLower()];
-    //	if (newState is null)
-    //	{
-    //		return;
-    //	}
-
-    //	if (currentState is not null)
-    //	{
-    //		currentState.Exit();
-    //	}
-
-    //	newState.Enter();
-    //	currentState = newState;
-    //}
+		newState.Enter();
+		currentState = newState;
+	}
 
 
 

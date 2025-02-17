@@ -23,6 +23,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="NothingCanGoWrong"
 
+[global_group]
+
+Player=""
+
 [input]
 
 ui_left={
@@ -61,3 +65,4 @@ ui_down={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.219501, 0.219501, 0.219501, 1)

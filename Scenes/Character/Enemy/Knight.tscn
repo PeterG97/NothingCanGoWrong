@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bntra1nbugxnv"]
+[gd_scene load_steps=35 format=3 uid="uid://bntra1nbugxnv"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_tbstg"]
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_k7d57"]
+[ext_resource type="Script" path="res://Scripts/States/Idle.cs" id="1_xoiec"]
 [ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="2_5a1cw"]
+[ext_resource type="Texture2D" uid="uid://lm3bkuqisucy" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Walk.png" id="3_e4bfj"]
 [ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="3_n6gye"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="4_2rfj6"]
 [ext_resource type="Texture2D" uid="uid://c1t7tdplguya1" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="4_iuw24"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
+[ext_resource type="Script" path="res://Scripts/States/Chase.cs" id="6_otn0f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43qi1"]
 atlas = ExtResource("4_iuw24")
@@ -51,6 +53,58 @@ region = Rect2(216, 0, 24, 32)
 atlas = ExtResource("4_iuw24")
 region = Rect2(240, 0, 24, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xh4r"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(0, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34t5o"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(22, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80hid"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(44, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axx3n"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(66, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i627d"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(88, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skjpc"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(110, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plxge"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(132, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m51ds"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(154, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pgfb"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(176, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnhis"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(198, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi22l"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(220, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ploom"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(242, 0, 22, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sghp"]
+atlas = ExtResource("3_e4bfj")
+region = Rect2(264, 0, 22, 33)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_mfmvh"]
 animations = [{
 "frames": [{
@@ -90,10 +144,63 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xh4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34t5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80hid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axx3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i627d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skjpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plxge")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m51ds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5pgfb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnhis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi22l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ploom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sghp")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
 }]
 
-[node name="Knight" type="CharacterBody2D"]
-script = ExtResource("1_tbstg")
+[sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
+
+[node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_k7d57")
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mfmvh")
+animation = &"Walk"
+autoplay = "Walk"
+frame_progress = 0.678876
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pf6ad")
@@ -102,10 +209,14 @@ shape = SubResource("CircleShape2D_pf6ad")
 
 [node name="Weapon" parent="." instance=ExtResource("2_5a1cw")]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("IntialState")]
+script = ExtResource("4_2rfj6")
+IntialState = NodePath("Chase")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_mfmvh")
-animation = &"Idle"
-autoplay = "Idle"
-frame_progress = 0.124032
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemyNode")]
+script = ExtResource("1_xoiec")
+enemyNode = NodePath("../..")
+
+[node name="Chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemyNode")]
+script = ExtResource("6_otn0f")
+enemyNode = NodePath("../..")
