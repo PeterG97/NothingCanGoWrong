@@ -1,8 +1,14 @@
 using Godot;
 using System;
 
-public partial class State : Node
+public abstract partial class State : Node
 {
+	[Signal]
+	public delegate void TransistionedEventHandler();
+
+	// [Signal]
+	// public delegate void TransistionedEventHandler();
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,13 +28,20 @@ public partial class State : Node
 	{
 		
 	}
-	public void Update()
-	{
+	public abstract void Update();
 		
-	}
-	
 	public void PhysicsUpdate(double delta)
 	{
-		
+
+	}
+
+	public override void _PhysicsProcess(double delta)
+	{
+
+	}
+
+	public void OnChildTransition(State state)
+	{
+
 	}
 }
