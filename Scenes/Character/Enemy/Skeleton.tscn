@@ -1,53 +1,53 @@
-[gd_scene load_steps=19 format=3 uid="uid://bntra1nbugxnv"]
+[gd_scene load_steps=19 format=3 uid="uid://6pibrl8v3mus"]
 
-[ext_resource type="Script" path="res://Scripts/States/Idle.cs" id="1_xoiec"]
-[ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="2_5a1cw"]
-[ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="3_n6gye"]
-[ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="4_2rfj6"]
-[ext_resource type="Texture2D" uid="uid://c1t7tdplguya1" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="4_iuw24"]
+[ext_resource type="Script" path="res://Scripts/States/Idle.cs" id="1_xvhgs"]
+[ext_resource type="Texture2D" uid="uid://c1t7tdplguya1" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="2_dsiir"]
+[ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="3_pgdad"]
+[ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="4_0qdr4"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.cs" id="5_ntb63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_43qi1"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(0, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2gpy"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(24, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ht8sg"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(48, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5oru"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(72, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rpqa"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(96, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5vfo7"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(120, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmpwm"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(144, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kft8t"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(168, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pj1bu"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(192, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jx4pf"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(216, 0, 24, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjha5"]
-atlas = ExtResource("4_iuw24")
+atlas = ExtResource("2_dsiir")
 region = Rect2(240, 0, 24, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mfmvh"]
@@ -93,8 +93,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
 
-[node name="Knight" type="CharacterBody2D" node_paths=PackedStringArray("Enemy")]
-script = ExtResource("1_xoiec")
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("Enemy")]
+motion_mode = 1
+script = ExtResource("1_xvhgs")
 Enemy = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -106,15 +107,14 @@ frame_progress = 0.765127
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pf6ad")
 
-[node name="HP" parent="." instance=ExtResource("3_n6gye")]
+[node name="HP" parent="." instance=ExtResource("3_pgdad")]
 
-[node name="Weapon" parent="." instance=ExtResource("2_5a1cw")]
+[node name="Weapon" parent="." instance=ExtResource("4_0qdr4")]
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("IntialState")]
-script = ExtResource("4_2rfj6")
+script = ExtResource("5_ntb63")
 IntialState = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Enemy")]
-script = ExtResource("1_xoiec")
+script = ExtResource("1_xvhgs")
 Enemy = NodePath("../..")
-MoveSpeed = 12

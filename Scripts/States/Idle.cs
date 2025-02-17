@@ -4,8 +4,7 @@ using System;
 
 public partial class Idle : State
 {
-    [Export] 
-    public Enemy Enemy { get; set; }
+    [Export] public Enemy Enemy { get; set; }
     
     [Export] 
     public int MoveSpeed {get; set;} = 10;
@@ -27,7 +26,10 @@ public partial class Idle : State
 
     public override void _Ready()
     {
-        Console.WriteLine(this.Enemy);
+        if (Enemy is null)
+        {
+            Enemy = this.GetParent().GetParent<Enemy>();
+        }
     }
 
     public override void Update(double delta)
