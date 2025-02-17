@@ -58,3 +58,5 @@ sprite_frames = SubResource("SpriteFrames_7261l")
 animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.361584
+
+[node name="Camera2D" type="Camera2D" parent="."]

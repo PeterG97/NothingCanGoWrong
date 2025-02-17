@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwnn3tqg6bxto"]
+[gd_scene load_steps=4 format=3 uid="uid://cwnn3tqg6bxto"]
 
 [ext_resource type="PackedScene" uid="uid://dd66ylvl56e11" path="res://Scenes/Levels/Level1_Dungeon.tscn" id="1_lir23"]
+[ext_resource type="PackedScene" uid="uid://wvh6lg662eq4" path="res://Scenes/Character/player.tscn" id="2_heuc0"]
 
 [sub_resource type="GDScript" id="GDScript_vylpa"]
 script/source = "extends Node2D
@@ -20,3 +21,7 @@ func _process(delta: float) -> void:
 script = SubResource("GDScript_vylpa")
 
 [node name="Level1Dungeon" parent="." instance=ExtResource("1_lir23")]
+position = Vector2(-82, 112)
+
+[node name="Player" parent="." instance=ExtResource("2_heuc0")]
+position = Vector2(705, 316)
