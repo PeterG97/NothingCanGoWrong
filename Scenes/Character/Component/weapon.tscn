@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bqqruvj6lxven"]
+[gd_scene load_steps=3 format=3 uid="uid://bqqruvj6lxven"]
 
-[node name="Weapon" type="Node2D"]
+[ext_resource type="Script" path="res://Scenes/Character/Component/RangedWeapon.cs" id="1_umciy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2xgt"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_umciy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p2xgt")

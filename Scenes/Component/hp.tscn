@@ -1,3 +1,6 @@
-[gd_scene format=3 uid="uid://dusm22kr4ox3a"]
+[gd_scene load_steps=2 format=3 uid="uid://dusm22kr4ox3a"]
+
+[ext_resource type="Script" path="res://Scenes/Component/Hp.cs" id="1_472h6"]
 
 [node name="HP" type="Node"]
+script = ExtResource("1_472h6")
