@@ -5,19 +5,20 @@ public partial class EnemyPatrol : State
 {
 	public static Vector2 MoveDirection {get; set;}
     public static double WanderTime {get; set;}
+    private static Random random = new();
 
     public static void RandomizeWander()
     {
-        MoveDirection = new Vector2(1,2);
-        WanderTime = 7;
+        MoveDirection = new Vector2(random.Next(-1,1),random.Next(-1,1));
+        WanderTime = random.Next(1,3);
     }
 
-    public static void Enter()
+    public override void Enter()
     {
         RandomizeWander();
     }
 
-    public override void Update()
+    public override void Update(double delta)
     {
         if (WanderTime > 0)
         {

@@ -12,4 +12,9 @@ public partial class Enemy : NPC
 	public override void _Process(double delta)
 	{
 	}
+
+    public override void _PhysicsProcess(double delta)
+    {
+        MoveAndSlide();
+    }
 }
