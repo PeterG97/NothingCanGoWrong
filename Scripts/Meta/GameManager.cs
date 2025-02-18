@@ -1,14 +1,13 @@
 namespace GameLogic;
 
-[Singleton]
 public partial class GameManager : Node
 {
-    public GameManager()
+    GameManager()
     {
         Instance = this;
     }
 
-    public static GameManager Instance;
+    public static GameManager Instance { get; private set; }
 
     [Export]
     public PackedScene Menu;
@@ -24,6 +23,8 @@ public partial class GameManager : Node
 
 	public override void _Ready()
 	{
+        Instance = this;
+
         GuiManager = this.FindChild<GuiManager>();
 
         SetScene(Menu);
