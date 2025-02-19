@@ -1,4 +1,6 @@
-﻿public partial class MeleeAttack : State
+﻿namespace GameLogic;
+
+public partial class MeleeAttack : State
 {
     [Export] private Enemy enemyNode;
     private Player player;

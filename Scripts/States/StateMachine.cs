@@ -4,7 +4,7 @@ public partial class StateMachine : Node
 {
 	[Export] private State IntialState;
 
-	private Dictionary<string,State> states = new ();
+	private Godot.Collections.Dictionary<string,State> states = new ();
 	public State currentState { get; set; }
 	
 	// Called when the node enters the scene tree for the first time.

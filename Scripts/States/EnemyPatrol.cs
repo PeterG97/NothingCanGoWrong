@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace GameLogic;
 
 public partial class EnemyPatrol : State
 {

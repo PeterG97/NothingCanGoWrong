@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj1iun8p7gdp6"]
+
+[ext_resource type="PackedScene" uid="uid://dd66ylvl56e11" path="res://Scenes/Levels/Level1_Dungeon.tscn" id="1_lir23"]
+[ext_resource type="PackedScene" uid="uid://wvh6lg662eq4" path="res://Scenes/Character/player.tscn" id="2_heuc0"]
+[ext_resource type="PackedScene" uid="uid://bntra1nbugxnv" path="res://Scenes/Knight.tscn" id="3_trpp1"]
+
+[sub_resource type="GDScript" id="GDScript_vylpa"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="BaseNode" type="Node2D"]
+script = SubResource("GDScript_vylpa")
+
+[node name="Level1Dungeon" parent="." instance=ExtResource("1_lir23")]
+position = Vector2(95, 202)
+
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("2_heuc0")]
+position = Vector2(917, 130)
+
+[node name="Knight" parent="." instance=ExtResource("3_trpp1")]
+position = Vector2(711, 59)
+
+[editable path="Level1Dungeon"]

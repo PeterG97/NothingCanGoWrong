@@ -1,5 +1,4 @@
-using Godot;
-using System;
+namespace GameLogic;
 
 public abstract partial class State : Node
 {

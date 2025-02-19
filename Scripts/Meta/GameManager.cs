@@ -45,8 +45,7 @@ public partial class GameManager : Node
         => SetLevel(Level + 1);
 
     private Node SetScene(PackedScene scene)
-    {
-        currentScene?.QueueFree();
+    { 
         currentScene = scene.Instantiate();
         AddChild(currentScene);
 

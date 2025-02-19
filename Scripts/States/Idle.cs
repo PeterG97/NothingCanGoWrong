@@ -1,3 +1,5 @@
+namespace GameLogic;
+
 public partial class Idle : State
 {
     [Export] private CharacterBody2D enemyNode;

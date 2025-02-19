@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://c58t01cww4lcs" path="res://assets/enviroment/dungeon.png" id="1_xur65"]
 [ext_resource type="Texture2D" uid="uid://qv3w12olia42" path="res://assets/enviroment/dungeon/dungeonex.png" id="2_xtvmi"]
+[ext_resource type="PackedScene" uid="uid://bntra1nbugxnv" path="res://Scenes/Knight.tscn" id="3_p1ih4"]
 [ext_resource type="PackedScene" uid="uid://wvh6lg662eq4" path="res://Scenes/Character/player.tscn" id="3_p4udu"]
-[ext_resource type="PackedScene" uid="uid://bntra1nbugxnv" path="res://Scenes/Character/Enemy/Knight.tscn" id="4_4wvex"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npj1j"]
 texture = ExtResource("1_xur65")
@@ -651,9 +651,8 @@ tile_set = SubResource("TileSet_yghq6")
 tile_map_data = PackedByteArray("AAATAAcAAAAAAAgAAAATAAgAAAAAAAkAAAAVAAcAAAABAAgAAAAVAAkAAAABAAkAAAAZAAgAAAADAAgAAAAPAAUAAAAIAAYAAAAPAAYAAAAIAAcAAAAMAAUAAAAIAAYAAAAMAAYAAAAIAAcAAAAJAAUAAAAIAAYAAAAJAAYAAAAIAAcAAAAXAAcAAAAHAAMAAAALAAoAAAADAAEAAAAKAAoAAAACAAEAAAAMAAoAAAAEAAEAAAALAAkAAAACAAAAAAALAAsAAAAEAAAAAAAdAAQAAAAHAAQAAAAFAPr/AAAEAAQAAAAFAPv/AAAEAAUAAAAGAPr/AAAFAAQAAAAGAPv/AAAFAAUAAAAHAPr/AAAGAAQAAAAHAPv/AAAGAAUAAAAFAPz/AAAIAAAAAAAFAP3/AAAIAAEAAAAFAP7/AAAIAAIAAAAJAP//AAADAAAAAAAKAP//AAAEAAEAAAAFAPf/AAAJAAQAAAAlAAEAAAAJAAUAAAAQAPr/AAACAAkAAAAUAOz/AAAAAAgAAAAUAO3/AAAAAAkAAAAcAOz/AAAAAAgAAAAcAO3/AAAAAAkAAAAXAOz/AAAAAAgAAAAXAO3/AAAAAAkAAAAaAOz/AAABAAgAAAA=")
 tile_set = SubResource("TileSet_cg7ik")
 
-[node name="Player" parent="." instance=ExtResource("3_p4udu")]
-position = Vector2(705, 316)
+[node name="Knight" parent="." instance=ExtResource("3_p1ih4")]
+position = Vector2(633, -98)
 
-[node name="Knight" parent="." instance=ExtResource("4_4wvex")]
-position = Vector2(223, 46)
-scale = Vector2(1.5, 1.5)
+[node name="Player" parent="." instance=ExtResource("3_p4udu")]
+position = Vector2(740, -73)

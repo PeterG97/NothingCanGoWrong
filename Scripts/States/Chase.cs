@@ -1,4 +1,6 @@
-﻿public partial class Chase : State
+﻿namespace GameLogic;
+
+public partial class Chase : State
 {
     [Export] private Enemy enemyNode;
     [Export] private int moveSpeed = 40;

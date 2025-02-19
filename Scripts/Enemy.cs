@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using GameLogic;
 
 public partial class Enemy : NPC
 {
