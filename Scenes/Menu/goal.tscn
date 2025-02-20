@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw71p7i8g0u1f"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/Goal.cs" id="1_h8n5x"]
+
+[node name="Goal" type="Control" node_paths=PackedStringArray("Label", "CheckBox")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h8n5x")
+Label = NodePath("Label")
+CheckBox = NodePath("CheckBox")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = -149.0
+offset_right = -32.0
+offset_bottom = 23.0
+text = "_ERROR_unset_"
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+offset_left = -28.0
+offset_right = -4.0
+offset_bottom = 24.0
