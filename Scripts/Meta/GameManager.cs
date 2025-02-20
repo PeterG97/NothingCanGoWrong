@@ -47,10 +47,6 @@ public partial class GameManager : Node
     private Node SetScene(PackedScene scene)
     {
         currentScene?.QueueFree();
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         currentScene = scene.Instantiate();
         AddChild(currentScene);
 
