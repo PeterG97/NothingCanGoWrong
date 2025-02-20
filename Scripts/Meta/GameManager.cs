@@ -12,7 +12,7 @@ public partial class GameManager : Node
     [Export]
     public PackedScene Menu;
     [Export]
-    public Array<PackedScene> Levels { get; set; } = new();
+    public Array<PackedScene> Levels { get; set; } = [];
 
     private Node currentScene;
     [Export]
@@ -45,7 +45,12 @@ public partial class GameManager : Node
         => SetLevel(Level + 1);
 
     private Node SetScene(PackedScene scene)
-    { 
+    {
+        currentScene?.QueueFree();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
         currentScene = scene.Instantiate();
         AddChild(currentScene);
 

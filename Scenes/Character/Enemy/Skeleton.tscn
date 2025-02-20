@@ -93,10 +93,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("Enemy")]
+[node name="Skeleton" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_xvhgs")
-Enemy = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mfmvh")
@@ -115,6 +114,5 @@ shape = SubResource("CircleShape2D_pf6ad")
 script = ExtResource("5_ntb63")
 IntialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("Enemy")]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("1_xvhgs")
-Enemy = NodePath("../..")

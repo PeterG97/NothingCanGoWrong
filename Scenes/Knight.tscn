@@ -1,6 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://bntra1nbugxnv"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_k7d57"]
+[ext_resource type="Script" path="res://Scripts/Character/Enemy.cs" id="1_k7d57"]
 [ext_resource type="Script" path="res://Scripts/States/Idle.cs" id="1_xoiec"]
 [ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="2_5a1cw"]
 [ext_resource type="Texture2D" uid="uid://bvql32avfgma6" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Attack.png" id="2_s577g"]

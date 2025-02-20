@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://wvh6lg662eq4"]
+[gd_scene load_steps=12 format=3 uid="uid://wvh6lg662eq4"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_028io"]
+[ext_resource type="Script" path="res://Scripts/Character/Player.cs" id="1_028io"]
 [ext_resource type="PackedScene" uid="uid://dusm22kr4ox3a" path="res://Scenes/Component/hp.tscn" id="2_5t0we"]
 [ext_resource type="PackedScene" uid="uid://bqqruvj6lxven" path="res://Scenes/Character/Component/weapon.tscn" id="3_fg3xg"]
 [ext_resource type="Texture2D" uid="uid://i7xshf1c5cjg" path="res://assets/enviroment/dungeon/fire.png" id="4_kaoeo"]
+[ext_resource type="PackedScene" uid="uid://dhjulvwgwrh3i" path="res://Scenes/Menu/goals.tscn" id="5_t2g3q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n147p"]
 
@@ -61,4 +62,10 @@ frame_progress = 0.361584
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -1)
+<<<<<<< Updated upstream
+zoom = Vector2(3, 3)
+=======
 zoom = Vector2(2, 2)
+
+[node name="Goals" parent="." instance=ExtResource("5_t2g3q")]
+>>>>>>> Stashed changes
