@@ -5,13 +5,11 @@ public partial class Player : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 
+	public bool HasKey { get; set; } = false;
+
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-
-		
-
-		
 
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
