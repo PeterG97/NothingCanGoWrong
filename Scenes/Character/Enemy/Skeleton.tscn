@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://6pibrl8v3mus"]
+[gd_scene load_steps=19 format=3 uid="uid://cgvuv4ee4fjdi"]
 
 [ext_resource type="Script" path="res://Scripts/States/Idle.cs" id="1_xvhgs"]
 [ext_resource type="Texture2D" uid="uid://c1t7tdplguya1" path="res://assets/Characters/Skeleton Sprite Pack/Skeleton/Sprite Sheets/Skeleton Idle.png" id="2_dsiir"]
@@ -93,9 +93,10 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pf6ad"]
 
-[node name="Skeleton" type="CharacterBody2D"]
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("enemyNode")]
 motion_mode = 1
 script = ExtResource("1_xvhgs")
+enemyNode = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mfmvh")
@@ -114,5 +115,6 @@ shape = SubResource("CircleShape2D_pf6ad")
 script = ExtResource("5_ntb63")
 IntialState = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemyNode")]
 script = ExtResource("1_xvhgs")
+enemyNode = NodePath("../..")
