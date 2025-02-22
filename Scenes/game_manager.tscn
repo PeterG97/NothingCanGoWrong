@@ -1,18 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://c5n2o6f72kiwd"]
 
 [ext_resource type="Script" path="res://Scripts/Meta/GameManager.cs" id="1_qg21o"]
-[ext_resource type="Script" path="res://Scripts/Meta/GuiManager.cs" id="2_13vek"]
 [ext_resource type="PackedScene" uid="uid://b7mpxfx6yqahe" path="res://Scenes/Menu/main_menu.tscn" id="2_umr5a"]
 [ext_resource type="PackedScene" uid="uid://dd66ylvl56e11" path="res://Scenes/Levels/Level1_Dungeon.tscn" id="3_mnvt5"]
+[ext_resource type="PackedScene" uid="uid://dhjulvwgwrh3i" path="res://Scenes/Menu/goals.tscn" id="4_vys88"]
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("goals")]
 script = ExtResource("1_qg21o")
+goals = NodePath("GUI/Goals")
 Menu = ExtResource("2_umr5a")
 Levels = [ExtResource("3_mnvt5"), ExtResource("3_mnvt5"), ExtResource("3_mnvt5")]
 
-[node name="GuiManager" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_13vek")
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Goals" parent="GUI" instance=ExtResource("4_vys88")]

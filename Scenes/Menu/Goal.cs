@@ -7,7 +7,7 @@ public partial class Goal : Node
     [Export]
     public CheckBox CheckBox { get; set; }
 
-    public GoalData Data { get; set { Data = value; Update(); } }
+    public GoalData Data { get; set; }
 
     public void Complete()
         => Data.Complete = true;
